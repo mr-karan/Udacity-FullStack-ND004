@@ -1,6 +1,6 @@
 import turtle
 
-def draw_rectangle():
+def draw_shape():
 	window = turtle.Screen()
 	window.bgcolor("blue")
 
@@ -8,13 +8,14 @@ def draw_rectangle():
 	jeff.color("brown")
 	jeff.shape("classic")
 	jeff.speed(1)
-	jeff.fd(100)
-	jeff.rt(90)
-	jeff.fd(50)
-	jeff.rt(90)
-	jeff.fd(100)
-	jeff.rt(90)
-	jeff.fd(50)
-	jeff.rt(90)
-
-draw_rectangle()
+	for i in range(4):
+		jeff.fd(100)
+		jeff.rt(90)
+	angie = turtle.Turtle()
+	angie.circle(50)
+	ron = turtle.Turtle()
+	for i in range(3):
+		ron.rt(120)
+		ron.fd(60)
+	window.exitonclick()
+draw_shape()

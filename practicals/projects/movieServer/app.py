@@ -1,4 +1,3 @@
-
 from flask import Flask
 app = Flask(__name__)
 from media import Movie
@@ -6,7 +5,8 @@ from flask import render_template
 import re
 
 @app.route('/')
-def hello():
+def index():
+	'''View function for index page.'''
 	toy_story = Movie(title = "Toy Story 3", trailer_youtube_url ="https://www.youtube.com/watch?v=QW0sjQFpXTU",
 				  poster_image_url="https://images-na.ssl-images-amazon.com/images/M/MV5BMTgxOTY4Mjc0MF5BMl5BanBnXkFtZTcwNTA4MDQyMw@@._V1_UY268_CR3,0,182,268_AL_.jpg",
 				  storyline='''Andy's toys get mistakenly delivered to a day care centre. 
@@ -26,17 +26,17 @@ def hello():
 	dark_knight = Movie(title = "The Dark Knight ", trailer_youtube_url ="https://www.youtube.com/watch?v=EXeTwQWrcwY",
 					  poster_image_url="https://images-na.ssl-images-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_UX182_CR0,0,182,268_AL_.jpg",
 					  storyline='''Set within a year after the events of Batman Begins, Batman, Lieutenant James Gordon, and new district attorney Harvey Dent successfully begin to round up the criminals''')
+	
 	movies=[toy_story,pulp_fiction,dark_knight,godfather,shawshank]
-	youtube_urls=[]
+	# Replace `Youtube URL` with just `Youtube video ID`
 	for movie in movies:
 		youtube_id_match = re.search(r'(?<=v=)[^&#]+', movie.trailer_youtube_url)
 		youtube_id_match = youtube_id_match or re.search(r'(?<=be/)[^&#]+', movie.trailer_youtube_url)
 		trailer_youtube_id = (youtube_id_match.group(0) if youtube_id_match else None)
 		movie.trailer_youtube_url = trailer_youtube_id
+
 	return render_template('index.html',
                            data=movies)
 
 if __name__ == '__main__':
 	app.run(debug=True)
-
-

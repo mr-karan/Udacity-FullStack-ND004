@@ -4,3 +4,6 @@
 - Nov 17 - item catalog
 - Nov 20 - Neighbourhood map
 - Nov 25 - design a game
+
+
+[calendar](http://imgur.com/a/9ElDJ)

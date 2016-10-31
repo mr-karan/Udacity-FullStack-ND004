@@ -1,0 +1,6 @@
+- Nov 4 - Resume
+- Nov 11 - Multi user blog
+- Nov 13 - Tournament
+- Nov 17 - item catalog
+- Nov 20 - Neighbourhood map
+- Nov 25 - design a game

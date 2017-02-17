@@ -10,8 +10,16 @@
   $ pip install -r requirements.txt
 ```
 
+### Create Database
+```bash
+   $ cd tournament/
+   $ psql 
+   $ CREATE DATABASE tournament;
+   $ \q
+   $ psql -dtournament < tournament.sql
+```
+
 ### Running Tests
 ```bash
-    $ cd tournament/
     $ python tournament_test.py
 ```

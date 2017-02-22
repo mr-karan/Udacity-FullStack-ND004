@@ -2,5 +2,5 @@
 Contains all materials for assignments + projects
 
 - Project 1 (Movie Server)
-[![Video demo](https://img.youtube.com/vi/34KgcWzjhpA/0.jpg)](https://www.youtube.com/watch?v=34KgcWzjhpA)
-
+- Project 2 
+- [Project 4](https://github.com/mr-karan/Udacity-FullStack-ND004/tree/master/Project4)

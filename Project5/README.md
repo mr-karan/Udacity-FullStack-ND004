@@ -1,20 +1,3 @@
-# Item Catalog
-
-
-### How to run
-
-This simple web application uses GitHub for authorization and authentication.  To simulate security best practices, the API keys are not in the main application file or hard-coded.  
-However, to facilitate grading, a shell script, `export_keys.sh`, is available to export API keys 
-to server environment variables.
-
-```
-  $ git clone https://github.com/mr-karan/Udacity-FullStack-ND004
-  $ cd Udacity-FullStack-ND004/Project5/
-  $ virtualenv venv
-  $ source venv/bin/activate
-  $ pip install -r requirements.txt
-```
-
 
 # Project 5 FSND
 

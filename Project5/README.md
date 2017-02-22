@@ -7,13 +7,44 @@ This simple web application uses GitHub for authorization and authentication.  T
 However, to facilitate grading, a shell script, `export_keys.sh`, is available to export API keys 
 to server environment variables.
 
-1. Download or clone the `Project5/vagrant` directory.
-2. Initialize the Vagrant vm via `vagrant up`, which should set up on `localhost:5000`.
-3. Connect to the virtual machine: `vagrant ssh`.
-4. (Optional) Obtain your own GitHub API keys by [registering a new application](https://github.com/settings/applications).  Ensure you add `localhost:5000/github-callback` as the authorization callback URL.
-5. (Optional) Inside the virtual machine, 
-`export GITHUB_CLIENT_ID` and `export GITHUB_CLIENT_SECRET`.
-6. `cd /vagrant/catalog`
-7. Run the provided key export shell script: `source export_keys.sh`.
-8. Start the server: `python application.py`.
-9. Navigate to `localhost:5000`.  The first-time run of the server will initialize the database with fixture data.
+```
+  $ git clone https://github.com/mr-karan/Udacity-FullStack-ND004
+  $ cd Udacity-FullStack-ND004/Project5/
+  $ virtualenv venv
+  $ source venv/bin/activate
+  $ pip install -r requirements.txt
+```
+
+
+# Project 5 FSND
+
+### Setup Project
+
+```bash
+  $ git clone https://github.com/mr-karan/Udacity-FullStack-ND004
+  $ cd Udacity-FullStack-ND004/Project5/
+  $ virtualenv venv
+  $ source venv/bin/activate
+  $ pip install -r requirements.txt
+```
+
+### Create Database
+```bash
+   $ psql 
+   $ CREATE DATABASE udacity_song;
+   $ \q
+```
+
+### Running
+- (Optional) Obtain your own GitHub API keys by [registering a new application](https://github.com/settings/applications).  Ensure you add `localhost:5000/github-callback` as the authorization callback URL.
+- `source export_keys.sh`.
+- `python application.py`.
+- `localhost:5000`.  The first-time run of the server will initialize the database with sample music data.
+
+
+
+
+### JSON Endpoint is available at
+
+[http://localhost:5000/catalog/api/artists](http://localhost:5000/catalog/api/artists)
+

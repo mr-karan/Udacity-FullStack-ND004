@@ -1,0 +1,40 @@
+{% extends "application.html" %}
+{% block content %}
+  <h3>{{title}}</h3>
+  <form class="form well" id="song-form" name="song-form" role="form" method="POST" action="{{form_action}}">
+    <div class="form-group col-md-8">
+      <label for="song-name">Song Name</label>
+      <input class="form-control" name="song-name" type="text" value="{{song.name}}" placeholder="Chainsaw Juggling 101" autofocus required>
+    </div>
+
+    <div class="form-group col-md-8">
+      <label for="song-url">Youtube Link</label>
+      <input class="form-control" name="song-url" type="url" value="{{song.song_url}}" placeholder="http://youtube.com/" required>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="song-artist">artist</label>
+      <select class="form-control" name="song-artist" form="song-form" required>
+        <option {% if not song.featured %}selected{% endif %}></option>
+        {% for artist in artists %}
+          <option value="{{artist.id}}" {% if artist.id == song.artist_id %}selected{% endif %}>{{artist.name}}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-group col-md-12">
+      <label for="song-description">Song Description</label>
+      <textarea class="form-control" name="song-description" rows="4" placeholder="Describe how do you feel/like this song...">{{song.description}}</textarea>
+    </div>
+    <div class="checkbox col-md-3">
+      <label>
+        <input name="song-featured" type="checkbox" {% if song.featured %}checked{% endif %}>
+        Featured Songs
+      </label>
+    </div>
+    <div class="col-md-offset-6 col-md-3">
+      <input type="submit" class="btn btn-success pull-right">
+      </input>
+    </div>
+    <div class="clearfix"></div>
+  </form>
+{% endblock %}

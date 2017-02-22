@@ -10,20 +10,20 @@
       <li class="list-group-item">
         <div class="media">
           <div class="media-left">
-            <img class="media-object" width="64" src="{{course.thumbnail_url}}" alt="icon">
+            <img class="media-object" width="64" src="{{song.thumbnail_url}}" alt="icon">
           </div>
           <div class="media-body media-middle">
-            <a class="btn btn-primary pull-right" href="{{course.course_url}}">
+            <a class="btn btn-primary pull-right" href="{{song.song_url}}">
               <i class="glyphicon glyphicon-globe"></i>
               Start
             </a>
             <ul class="list-unstyled">
-              <li><strong class="media-heading">{{course.course_number}}</strong></li>
-              <li>Starts {{course.start_date}}</li>
-              {% if course.featured %}
+              <li><strong class="media-heading">{{song.song_number}}</strong></li>
+              <li>Starts {{song.start_date}}</li>
+              {% if song.featured %}
                 <li class="text-warning">
                   <i class="glyphicon glyphicon-star"></i>
-                  Featured Course
+                  Featured song
                 </li>
               {% endif %}
             </ul>
@@ -32,20 +32,20 @@
       </li>
       <li class="list-group-item">
         <strong>Description</strong>
-        <p>{{course.description}}</p>
+        <p>{{song.description}}</p>
       </li>
 
-      {% if logged_in() and editable(course) %}
+      {% if logged_in() and editable(song) %}
       <li class="list-group-item clearfix">
         <ul class="list-inline pull-right">
           <li>
-            <a href="{{url_for('edit_course', course_id=course.id)}}">
+            <a href="{{url_for('edit_song', song_id=song.id)}}">
               <i class="glyphicon glyphicon-pencil"></i>
               Edit
             </a>
           </li>
           <li>
-            <a class="text-danger" href="{{url_for('delete_course', course_id=course.id)}}">
+            <a class="text-danger" href="{{url_for('delete_song', song_id=song.id)}}">
               <i class="glyphicon glyphicon-trash"></i>
               Delete
             </a>

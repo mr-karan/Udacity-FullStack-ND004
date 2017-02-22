@@ -10,7 +10,7 @@
       <li class="list-group-item">
         <div class="media">
           <div class="media-left">
-            <img class="media-object" width="64" src="{{course.thumbnail_url}}" alt="icon">
+            <img class="media-object" width="64" src="{{song.thumbnail_url}}" alt="icon">
           </div>
           <div class="media-body media-middle">
             <ul class="list-unstyled">
@@ -25,7 +25,7 @@
       <li class="list-group-item clearfix">
         <div class="btn-group pull-right" role="group" aria-label="...">
           <form class="form" id="delete-form" role="form" method="post" action="{{form_action}}">
-            <a href="{{url_for('view_course', course_id=course.id)}}"
+            <a href="{{url_for('view_song', song_id=song.id)}}"
                class="btn btn-default">take me back!</a>
             <input type="submit" class="btn btn-danger"
                    value=" (Delete it.)"></input>

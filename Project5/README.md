@@ -31,3 +31,7 @@
 
 [http://localhost:5000/catalog/api/artists](http://localhost:5000/catalog/api/artists)
 
+### Screenshots
+
+![screens/api.png]()
+![screens/website.png]()

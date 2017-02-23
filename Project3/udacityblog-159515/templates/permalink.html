@@ -1,70 +1,52 @@
 {% extends "base.html" %}
 
-
-{% block header %}
-<div class="height-adjust">
-</div>
-<div class="">
-    <a class="post-title" href="/blog/{{post.slug}}">{{post.title}}</a>
-    <br>
-    <div class="post-date">{{post.created_at.strftime('%b %d, %Y')}}</div>
-</div>
-{% endblock %}
-
 {% block content %}
-<br>
-<br>
-<div class="pre">
-	{{ post.content | safe}}
-</div>
-<div class="row">
-  <div class="col-md-8">
-    <ul class="list-inline">
-      <li><a href="/blog/like/{{post.key().id()}}" class="btn fa fa-heart-o"><span >&nbsp;{{post.likes.count()}}</span></a></li>
-      <li><a href="#comments"><span class="fa fa-comment-o"></span> {{post.comments.count()}} comments</a></li>
-      {% if is_author %}
-        <li><a href="/blog/edit/{{post.key().id()}}"><span class="fa fa-edit"></span>&nbsp;Edit</a></li>
-        <li><a href="/blog/delete/{{ post.key().id()}}"><span class="fa fa-trash-o"></span>&nbsp;Delete</a></li>
-      {% endif %}
-    </ul>
-  </div>
-</div>
-<div class="row">
-<br>
-<div class="response" id="comments">Responses</div>
-{% for comment in post.comments %}
-<div class="col-sm-8">
-    <div class="comment-user">
-      {{ comment.user.username }} says...
+    <div class="row">
+        <div class="col-md-7">
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    {{error}}
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-md-5">
+            <a id="post-delete" class="btn btn-danger pull-right" href="/blog/deletepost/{{post.key().id()}}">Delete</a>
+            <a id="post-edit" class="btn btn-primary pull-right" href="/blog/editpost/{{post.key().id()}}">Edit</a>
+        </div>
+        {{post.render() | safe}}
     </div>
-    <div class="response pull-right">
-      <a href="/edit/comment/{{comment.key().id()}}" class="btn btn-xs btn-success">Edit</a> |
-      <form method="post" action="/delete/comment/{{comment.key().id()}}" style="display: inline;">
-        <button type="submit" class="btn btn-xs btn-danger">
-          <i class="glyphicon glyphicon-trash"></i>&nbsp;Delete
-        </button>
-      </form>
+
+    <div class="row">
+        <div class="sub-work col-md-12">
+            <form method="post" role="form">
+                <input type="hidden" class="form-control" id="like" name="like" value="update">
+                <button type="submit" class="btn btn-primary">Like {{noOfLikes}}</button>
+            </form>
+        </div>
+
+        <div class="sub-work col-md-12">
+            <form method="post" role="form" class="comment-form">
+                <div class="form-group">
+                    <label for="comment">Comment:</label>
+                    <input type="text" class="form-control" id="comment" name="comment" value="">
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+
+        <div class="sub-work col-md-12">
+            {% for c in comments %}
+            <blockquote>
+                <a class="comment-delete btn btn-danger pull-right" href="/blog/deletecomment/{{post.key().id()}}/{{c.key().id()}}">Delete</a>
+                <a class="comment-edit btn btn-primary pull-right" href="/blog/editcomment/{{post.key().id()}}/{{c.key().id()}}">Edit</a>
+                <p>{{ c.comment }}</p>
+                <footer>{{ c.getUserName() }}</footer>
+            </blockquote>
+            {% endfor %}
+        </div>
+
     </div>
-    <pre class="comment-text">
-      {{ comment.comment }}
-    </pre>
-    <hr/>
-  </div>
-{% endfor %}
-</div>
-<div class="row">
-<div class="col-sm-5">
-  <form method="post" action="/blog/{{post.key().id()}}/add/comment">
-    <h4>Write a response</h4>
-    <textarea name="comment" rows="5" cols="50" class="form-control"></textarea>
-    <br>
-    <button type="submit" class="btn btn-sm btn-primary">Publish</button>
-  </form>
-</div>
-</div>
 {% endblock %}
 
-{% block bottom_nav %}
-<div class="top-clear">
-</div>
-{% endblock %}
+

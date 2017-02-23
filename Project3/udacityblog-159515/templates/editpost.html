@@ -1,36 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="row">
-
-    <div class="col-md-12">
-        <h2>Edit post</h2>
+  
+    <div class="editpost">
+        <div class="editpost__form">
+            <form method="post" autocomplete="off">
+                <input autofocus class="form__input" placeholder="Title" type="text" name="subject" value="{{subject}}">
+                <textarea class="form__textarea" placeholder="Tell your story..." type="text" name="content">{{content}}</textarea>
+                <a href="/{{post_id}}">
+                    <button class="button-outline">back</button>
+                </a>
+                <input class="button-outline form__submit" type="submit" value="save">
+                <span class="form__message">{{error}}</span>
+            </form>
+        </div>
     </div>
 
-    <div class="col-md-12">
-        <form method="post" role="form">
-
-            <input type="hidden" id="post_id" name="post_id" value="{{post_id}}">
-            
-            <div class="form-group">
-                <label for="subject">Subject:</label>
-                <input type="text" class="form-control" id="subject" name="subject" value="{{subject}}">
-            </div>
-           
-            <div class="form-group">
-                <label for="content">Post Content:</label>
-                <textarea class="form-control" id="content" name="content" value="{{content}}" rows="10">{{content}}</textarea>
-            </div>
-           
-            {% if error %}
-            <div class="alert alert-danger" role="alert">
-                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                {{error}}
-            </div>
-            {% endif %}
-
-            <button type="submit" class="btn btn-success">Submit</button>
-        </form>
-    </div>
-</div>
+  
 {% endblock %}

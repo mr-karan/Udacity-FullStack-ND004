@@ -14,28 +14,50 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-import webapp2
-from handlers.index import IndexHandler
-from handlers.auth import Register, LoginHandler, LogoutHandler
-from handlers.blog import AddBlog, EditBlog, Permalink, BlogList, DeleteBlog
-from handlers.comment import AddComment, DeleteComment, CommentError, UpdateComment
-from handlers.likes import LikeBlog, LikeError
+
+# General
+from webapp2 import WSGIApplication
+from google.appengine.ext import db
+from helpers import *
 
 
-app = webapp2.WSGIApplication([
-    ('/', BlogList),
-    ('/allposts', BlogList),
+# Models
+from models.user import User
+from models.post import Post
+from models.like import Like
+from models.comment import Comment
+
+
+# Handlers
+from handlers.blog import BlogHandler
+from handlers.blogfront import BlogFrontHandler
+from handlers.signup import SignupHandler
+from handlers.login import LoginHandler
+from handlers.logout import LogoutHandler
+from handlers.post import PostHandler
+from handlers.newpost import NewPostHandler
+from handlers.editpost import EditPostHandler
+from handlers.deletepost import DeletePostHandler
+from handlers.likepost import LikePostHandler
+from handlers.unlikepost import UnlikePostHandler
+from handlers.addcomment import AddCommentHandler
+from handlers.editcomment import EditCommentHandler
+from handlers.deletecomment import DeleteCommentHandler
+
+
+# Routing
+app = WSGIApplication([
+    ('/', BlogFrontHandler),
+    ('/signup', SignupHandler),
     ('/login', LoginHandler),
     ('/logout', LogoutHandler),
-    ('/register', Register),
-    ('/blog/add', AddBlog),
-    ('/blog/edit/([0-9]+)', EditBlog),
-    ('/blog/like/([0-9]+)', LikeBlog),
-    ('/blog/delete/([0-9]+)', DeleteBlog),
-    ('/blog/([a-z0-9\-]+)', Permalink),
-    ('/blog/([0-9]+)/add/comment', AddComment),
-    ('/delete/comment/([0-9]+)', DeleteComment),
-    ('/edit/comment/([0-9]+)', UpdateComment),
-    ('/comment/error', CommentError),
-    ('/like/error', LikeError),
+    ('/newpost', NewPostHandler),
+    ('/([0-9]+)', PostHandler),
+    ('/([0-9]+)/like', LikePostHandler),
+    ('/([0-9]+)/unlike', UnlikePostHandler),
+    ('/([0-9]+)/edit', EditPostHandler),
+    ('/([0-9]+)/delete/([0-9]+)', DeletePostHandler),
+    ('/([0-9]+)/addcomment/([0-9]+)', AddCommentHandler),
+    ('/([0-9]+)/([0-9]+)/editcomment/([0-9]+)', EditCommentHandler),
+    ('/([0-9]+)/([0-9]+)/deletecomment/([0-9]+)', DeleteCommentHandler)
 ], debug=True)

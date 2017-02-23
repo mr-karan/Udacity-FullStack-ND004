@@ -18,7 +18,3 @@ Make sure you have [Google Cloud Engine](https://cloud.google.com/sdk/gcloud/) s
 ### Available at
 
 [https://udacityblog-159515.appspot.com/](https://udacityblog-159515.appspot.com/)
-
-### Screenshots
- ![img](screens/screen1.png "webpage")
- ![img](screens/screen2.png "blog")

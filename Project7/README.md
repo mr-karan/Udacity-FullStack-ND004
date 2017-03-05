@@ -1,16 +1,5 @@
-# Udacity FSND - Project 7
-## CP, New Delhi Neighborhood Map
+I am Karan, from New Delhi. I am in my final year undergraduate, majors in CS. I’m a backend developer and have done a Google Summer of Code with Python Software Foundation in 2016. I am presently working remotely for a startup- Supply.ai and the work is pretty similar to the job requirement at Instamojo. I am working with Django to design REST APIs amongst other backend related work. I am aware of the minimum 2 years of experience for this job but if you have any positions for junior developer, I’d be eager to apply for that. I am eager and open to learn a new tech stack and willing to put in effort. 
 
-## Introduction
-This application is an interactive map of Connaught Place, New Delhi with few of bars and pubs.
-There is also an instant search feature to allow the user to search through the locations marked on the map.
-
-## How to run
-```bash
-git clone https://github.com/mr-karan/Udacity-FullStack-ND004.git
-cd Project7/
-```
-Open `index.html` in a browser of your choice.
-
-
-To view the interactive map on github pages go to [http://karansh.me/Udacity-FullStack-ND004/Project7/](http://karansh.me/Udacity-FullStack-ND004/Project7/)
+I’m attaching my resume link and Github profile if you’re interested.  
+  
+Thanks a lot. 

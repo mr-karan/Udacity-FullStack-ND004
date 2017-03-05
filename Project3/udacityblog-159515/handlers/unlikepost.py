@@ -8,6 +8,8 @@ class UnlikePostHandler(BlogHandler):
     def get(self, post_id):
         key = db.Key.from_path('Post', int(post_id), parent=blog_key())
         post = db.get(key)
+        if not comment:
+            return self.redirect('/')
 
         if self.user and self.user.key().id() == post.user_id:
             self.write("You cannot dislike your own post")

@@ -8,6 +8,9 @@ class DeletePostHandler(BlogHandler):
         if self.user and self.user.key().id() == int(post_user_id):
             key = db.Key.from_path('Post', int(post_id), parent=blog_key())
             post = db.get(key)
+            if not post:
+                return self.redirect('/')
+
             post.delete()
 
             self.redirect('/')
@@ -18,9 +21,11 @@ class DeletePostHandler(BlogHandler):
         else:
             key = db.Key.from_path('Post', int(post_id), parent=blog_key())
             post = db.get(key)
+            if not post:
+                return self.redirect('/')
 
             comments = db.GqlQuery(
                 "select * from Comment where ancestor is :1 order by created desc limit 10", key)
 
             error = "You don't have permission to delete this post"
-            self.render("permalink.html", post=post, comments=comments, error=error)
+            self.redirect("permalink.html", post=post, comments=comments, error=error)

@@ -9,6 +9,8 @@ class EditCommentHandler(BlogHandler):
             postKey = db.Key.from_path('Post', int(post_id), parent=blog_key())
             key = db.Key.from_path('Comment', int(comment_id), parent=postKey)
             comment = db.get(key)
+            if not comment:
+                return self.redirect('/')
 
             self.render('editcomment.html', content=comment.content)
 
@@ -28,6 +30,8 @@ class EditCommentHandler(BlogHandler):
             postKey = db.Key.from_path('Post', int(post_id), parent=blog_key())
             key = db.Key.from_path('Comment', int(comment_id), parent=postKey)
             comment = db.get(key)
+            if not comment:
+                return self.redirect('/')
 
             comment.content = content
             comment.put()

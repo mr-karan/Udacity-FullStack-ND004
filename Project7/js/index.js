@@ -7,7 +7,7 @@ var map = L.mapbox.map('map', 'mapbox.light') // update with your own map id
   var listings = document.getElementById('listings');
   var locations = L.mapbox.featureLayer().addTo(map);
 
-  locations.loadURL(''); // load in your own GeoJSON file here
+  locations.loadURL('http://raw.githubusercontent.com/mr-karan/Udacity-FullStack-ND004/master/Project7/location_delhi.geojson'); // load in your own GeoJSON file here
 
   function setActive(el) {
     var siblings = listings.getElementsByTagName('div');

@@ -10,6 +10,9 @@ class DeleteCommentHandler(BlogHandler):
             postKey = db.Key.from_path('Post', int(post_id), parent=blog_key())
             key = db.Key.from_path('Comment', int(comment_id), parent=postKey)
             comment = db.get(key)
+            if not comment:
+                return self.redirect('/')
+
             comment.delete()
 
             self.redirect('/' + post_id)

@@ -34,11 +34,6 @@ class EditPostHandler(BlogHandler):
             content = self.request.get('content')
 
             if subject and content:
-                key = db.Key.from_path('Post', int(post_id), parent=blog_key())
-                post = db.get(key)
-                if not post:
-                    return self.redirect('/login')
-
                 post.subject = subject
                 post.content = content
 

@@ -11,8 +11,8 @@ class EditCommentHandler(BlogHandler):
             comment = db.get(key)
             if not comment:
                 return self.redirect('/')
-
-            self.render('editcomment.html', content=comment.content)
+            if self.user.name == comment.user_name:
+                self.render('editcomment.html', content=comment.content)
 
         elif not self.user:
             self.redirect('/login')

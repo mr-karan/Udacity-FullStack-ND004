@@ -5,14 +5,12 @@ from helpers import *
 class DeleteCommentHandler(BlogHandler):
 
     def get(self, post_id, post_user_id, comment_id):
+        comment = db.Key.from_path('Comment', int(comment_id), parent=blog_key())
+        comment = db.get(comment)
+        if not comment:
+            return self.redirect('/login')
 
-        if self.user and self.user.key().id() == int(post_user_id):
-            postKey = db.Key.from_path('Post', int(post_id), parent=blog_key())
-            key = db.Key.from_path('Comment', int(comment_id), parent=postKey)
-            comment = db.get(key)
-            if not comment:
-                return self.redirect('/')
-
+        if self.user and self.user.key().id() == comment.user_id:
             comment.delete()
 
             self.redirect('/' + post_id)

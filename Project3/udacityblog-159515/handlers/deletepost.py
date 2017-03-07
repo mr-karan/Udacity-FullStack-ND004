@@ -5,14 +5,14 @@ from helpers import *
 class DeletePostHandler(BlogHandler):
 
     def get(self, post_id, post_user_id):
-        if self.user and self.user.key().id() == int(post_user_id):
-            key = db.Key.from_path('Post', int(post_id), parent=blog_key())
-            post = db.get(key)
-            if not post:
-                return self.redirect('/')
+        key = db.Key.from_path('Post', int(post_id), parent=blog_key())
+        post = db.get(key)
+        if not post:
+            return self.redirect('/login')
 
+        # To Check if user owns the post
+        if self.user and self.user.key().id() == post.user_id:
             post.delete()
-
             self.redirect('/')
 
         elif not self.user:
